@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Chemistry Matching Game</h1>
+    <div class="instructions">
+      <p>Drag the atoms to form hydrocarbons and match them correctly!</p>
+    </div>
+    <div class="play-area">
+      <div class="atoms">
+        <h2>Atoms</h2>
+        <div class="atom" draggable="true" data-type="H">H</div>
+        <div class="atom" draggable="true" data-type="C">C</div>
+        <div class="atom" draggable="true" data-type="O">O</div>
+      </div>
+      <div class="targets">
+        <h2>Hydrocarbons</h2>
+        <div class="target" data-match="CH4">CH₄ (Methane)</div>
+        <div class="target" data-match="C2H6">C₂H₆ (Ethane)</div>
+        <div class="target" data-match="C3H8">C₃H₈ (Propane)</div>
+      </div>
+    </div>
+    <div class="feedback"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

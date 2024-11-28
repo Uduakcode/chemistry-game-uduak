@@ -1,0 +1,46 @@
+const atoms = document.querySelectorAll('.atom');
+const targets = document.querySelectorAll('.target');
+const feedback = document.querySelector('.feedback');
+
+let draggedAtom = null;
+
+// Drag start
+atoms.forEach(atom => {
+  atom.addEventListener('dragstart', () => {
+    draggedAtom = atom;
+  });
+});
+
+// Drag over and drop onto target
+targets.forEach(target => {
+  target.addEventListener('dragover', (e) => {
+    e.preventDefault(); // Allow drop
+  });
+
+  target.addEventListener('drop', () => {
+    const targetFormula = target.getAttribute('data-match');
+    const atomType = draggedAtom.getAttribute('data-type');
+    
+    // Simulate formula check (advanced logic can replace this placeholder)
+    if (updateFormula(target, atomType) === targetFormula) {
+      feedback.textContent = "Correct Match!";
+      feedback.classList.remove('incorrect');
+      feedback.classList.add('correct');
+    } else {
+      feedback.textContent = "Incorrect Match. Try again!";
+      feedback.classList.remove('correct');
+      feedback.classList.add('incorrect');
+    }
+  });
+});
+
+// Function to update the formula displayed on the target
+function updateFormula(target, atomType) {
+  const existingFormula = target.textContent.trim();
+  const updatedFormula = existingFormula.includes(atomType)
+    ? existingFormula
+    : existingFormula + atomType;
+
+  target.textContent = updatedFormula; // Update UI
+  return updatedFormula.replace(/\s+/g, ''); // Return sanitized string
+}
